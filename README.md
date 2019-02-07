@@ -9,7 +9,7 @@ Solutions to the programming challenges should be put on `index.js`.
 
 
 ## Environment
-* NodeJS `v5.7.1` or later
+* NodeJS `v10.*`
 
 ## Library (lib.js)
 

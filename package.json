@@ -1,6 +1,9 @@
 {
   "name": "problemset",
   "version": "1.0.0",
+  "engines": {
+    "node": "^10"
+  },
   "dependencies": {
     "rand-token": "^0.4.0"
   },

@@ -98,8 +98,8 @@ class ResourceManager {
       const resource = new Resource();
 
       resource.on('released', () => {
-        const job = this.queued.shift() || (() => { });
-        job(resource);
+        const callback = this.queued.shift() || (() => { });
+        callback(resource);
       });
 
       resources.push(resource);

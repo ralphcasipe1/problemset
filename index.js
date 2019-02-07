@@ -66,3 +66,67 @@ source.on('data', data => {
   console.log(data);
 });
 
+/**
+ * Solution #3 Resource Pooling
+ */
+class Resource extends events.EventEmitter {
+  release() {  
+    this.emit('release');
+  }
+}
+
+class ResourceManager {
+  constructor(count){
+    this.queued = [];
+    this.resources = this._instantiateResources(count);
+  }
+
+  borrow(callback){
+    if (!this.resources.length) {
+      return this.queued.push(callback);
+    }
+
+    const resource = this.resources.pop();
+
+    callback(resource);
+  }
+
+  _instantiateResources(count) {
+    const resources = [];
+
+    for (let index = 0; index < count; index++) {
+      const resource = new Resource();
+
+      resource.on('released', () => {
+        const job = this.queued.pop() || (() => { });
+        job(resource);
+      });
+
+      resources.push(resource);
+    }
+
+    return resources;
+  }
+}
+
+/* let pool = new ResourceManager(2);
+console.log('START');
+
+let timestamp = Date.now();
+
+pool.borrow((res) => {
+  console.log('RES: 1');
+
+  setTimeout(() => {
+    res.release();
+  }, 500);
+});
+
+pool.borrow((res) => {
+  console.log('RES: 2');
+});
+
+pool.borrow((res) => {
+  console.log('RES: 3');
+  console.log('DURATION: ' + (Date.now() - timestamp));
+}); */

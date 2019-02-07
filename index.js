@@ -98,7 +98,7 @@ class ResourceManager {
       const resource = new Resource();
 
       resource.on('released', () => {
-        const job = this.queued.pop() || (() => { });
+        const job = this.queued.shift() || (() => { });
         job(resource);
       });
 

@@ -4,7 +4,7 @@ var RandStream = require('../lib/lib').RandStream,
 
 describe('Sample RandStream test', function () {
   it('should pass if stream is readable', function () {
-    var stream = new RandStream();
+    let stream = new RandStream();
     assert(stream.readable);
   });
 });

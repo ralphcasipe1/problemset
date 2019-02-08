@@ -37,10 +37,10 @@ const doAsync = async data => {
 
 /* let input = [
   'A',
-  [ 'B', 'C', [ 
+  ['B', 'C', [
     'D', 'E', [
-      'F', 'G',
-    ],
+      'F', 'G'
+    ]
   ]],
   'H',
   [ 'I', 'J' ],

@@ -60,11 +60,11 @@ class RandStringSource extends events.EventEmitter {
   }
 }
 
-const source = new RandStringSource(new RandStream());
+/* const source = new RandStringSource(new RandStream());
 
 source.on('data', data => {
   console.log(data);
-});
+}); */
 
 /**
  * Solution #3 Resource Pooling

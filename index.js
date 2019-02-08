@@ -23,7 +23,14 @@ const doAsync = async arr => {
   }
 };
 
-// console.log(doAsync(input)); 
+/* let input = [
+  'A'
+  [ 'B', 'C', [ 'D', 'E' ] ],
+  'F',
+  [ 'G', 'H' ],
+];
+
+console.log(doAsync(input)); */ 
 
 /**
  * Solution #2 Streams

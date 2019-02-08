@@ -24,13 +24,17 @@ const doAsync = async arr => {
 };
 
 /* let input = [
-  'A'
-  [ 'B', 'C', [ 'D', 'E' ] ],
-  'F',
-  [ 'G', 'H' ],
+  'A',
+  [ 'B', 'C', [ 
+    'D', 'E', [
+      'F', 'G',
+    ],
+  ]],
+  'H',
+  [ 'I', 'J' ],
 ];
 
-console.log(doAsync(input)); */ 
+console.log(doAsync(input)); */
 
 /**
  * Solution #2 Streams

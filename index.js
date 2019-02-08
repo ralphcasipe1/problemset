@@ -4,22 +4,34 @@ const events = require('events');
 
 const { asyncOp, RandStream } = require('./lib/lib');
 
+const flatten = data => 
+  data.reduce((acculmulator, current) => 
+    acculmulator.concat(Array.isArray(current)
+      ? flatten(current)
+      : current
+    ),
+    []
+  );
+const firstStart = data =>
+  data.map(datum => asyncOp(datum));
+
 /**
  * Solution #1 Asynchronous Operations
  * 
  * @param {*} arr 
  */
-const doAsync = async arr => {
-  for (const element of arr) {
-    if (Array.isArray(element)) {
-      const promise = element.map(el => asyncOp(el));
-
+const doAsync = async data => {
+  for (const datum of data) {
+    if (Array.isArray(datum)) {
+      const flattenedData = flatten(datum);
+      
+      const promise = firstStart(flattenedData);
+      
       await Promise.all(promise);
 
       continue;
     }
-
-    await asyncOp(element);
+    await asyncOp(datum);
   }
 };
 
